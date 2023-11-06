@@ -48,3 +48,57 @@ func (ufc UFC) NotifyFighters(promotion string) {
 		}
 	}
 }
+
+type PFL struct {
+	WeightClasses map[string]*weightclasses.WeightClass
+}
+
+func (u PFL) Name() string {
+	return "PFL"
+}
+
+// AddFighter adds a fighter to a weight class in UFC
+func (ufc *PFL) AddFighter(fighter fighters.Fighter, weightClassName string) {
+	weightClass, exists := ufc.WeightClasses[weightClassName]
+	if !exists {
+		weightClass = weightclasses.NewWeightClass(weightClassName)
+		ufc.WeightClasses[weightClassName] = weightClass
+	}
+	weightClass.AddFighter(fighter)
+}
+
+// NotifyFighters notifies fighters in each weight class
+func (ufc PFL) NotifyFighters(promotion string) {
+	for _, weightClass := range ufc.WeightClasses {
+		for _, fighter := range weightClass.Fighters {
+			fighter.Update(promotion)
+		}
+	}
+}
+
+type GoldenBoy struct {
+	WeightClasses map[string]*weightclasses.WeightClass
+}
+
+func (u GoldenBoy) Name() string {
+	return "GoldenBoy"
+}
+
+// AddFighter adds a fighter to a weight class in UFC
+func (ufc *GoldenBoy) AddFighter(fighter fighters.Fighter, weightClassName string) {
+	weightClass, exists := ufc.WeightClasses[weightClassName]
+	if !exists {
+		weightClass = weightclasses.NewWeightClass(weightClassName)
+		ufc.WeightClasses[weightClassName] = weightClass
+	}
+	weightClass.AddFighter(fighter)
+}
+
+// NotifyFighters notifies fighters in each weight class
+func (ufc GoldenBoy) NotifyFighters(promotion string) {
+	for _, weightClass := range ufc.WeightClasses {
+		for _, fighter := range weightClass.Fighters {
+			fighter.Update(promotion)
+		}
+	}
+}
