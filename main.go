@@ -8,15 +8,15 @@ import (
 )
 
 func main() {
-
+	fighterfactory := fighters.FighterFactory{}
 	mma := combatsport.NewCombatSport("MMA")
 
 	ufc := &promotionsmanager.UFC{WeightClasses: make(map[string]*weightclasses.WeightClass)}
 	promotionsmanager.GetPromotionManager().Promotions["UFC"] = ufc
 
-	JonJones := fighters.NewFighter("Jon Jones", 20, 194)
+	JonJones := fighterfactory.NewFighter("Jon Jones", 20, 194)
 
-	Khabib := fighters.NewFighter("Khabib Nurmagomedov", 32, 178)
+	Khabib := fighterfactory.NewFighter("Khabib Nurmagomedov", 32, 178)
 
 	ufc.AddFighter(*JonJones, "Light-HeavyWeight")
 	ufc.AddFighter(*Khabib, "LightWeight")
@@ -25,7 +25,7 @@ func main() {
 	pfl := &promotionsmanager.PFL{WeightClasses: make(map[string]*weightclasses.WeightClass)}
 	promotionsmanager.GetPromotionManager().Promotions["PFL"] = pfl
 
-	Venom := fighters.NewFighter("Michael Venom", 28, 187)
+	Venom := fighterfactory.NewFighter("Michael Venom", 28, 187)
 	pfl.AddFighter(*Venom, "WelterWeight")
 
 	mma.AddPromotion(pfl)
@@ -40,8 +40,8 @@ func main() {
 	goldenboy := &promotionsmanager.GoldenBoy{WeightClasses: make(map[string]*weightclasses.WeightClass)}
 	promotionsmanager.GetPromotionManager().Promotions["GoldenBoy"] = goldenboy
 
-	Ali := fighters.NewFighter("Muhammad Ali", 25, 186)
-	Frazier := fighters.NewFighter("George Frazier", 22, 185)
+	Ali := fighterfactory.NewFighter("Muhammad Ali", 25, 186)
+	Frazier := fighterfactory.NewFighter("George Frazier", 22, 185)
 
 	goldenboy.AddFighter(*Ali, "HeavyWeight")
 	goldenboy.AddFighter(*Frazier, "HeavyWeight")
