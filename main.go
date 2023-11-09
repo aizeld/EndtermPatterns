@@ -12,6 +12,7 @@ func main() {
 	mma := combatsport.NewCombatSport("MMA")
 
 	ufc := &promotionsmanager.UFC{WeightClasses: make(map[string]*weightclasses.WeightClass)}
+	promotionsmanager.GetPromotionManager().Promotions["UFC"] = ufc
 
 	JonJones := fighters.NewFighter("Jon Jones", 20, 194)
 
@@ -22,6 +23,7 @@ func main() {
 
 	mma.AddPromotion(ufc)
 	pfl := &promotionsmanager.PFL{WeightClasses: make(map[string]*weightclasses.WeightClass)}
+	promotionsmanager.GetPromotionManager().Promotions["PFL"] = pfl
 
 	Venom := fighters.NewFighter("Michael Venom", 28, 187)
 	pfl.AddFighter(*Venom, "WelterWeight")
@@ -36,6 +38,7 @@ func main() {
 
 	boxing := combatsport.NewCombatSport("Boxing")
 	goldenboy := &promotionsmanager.GoldenBoy{WeightClasses: make(map[string]*weightclasses.WeightClass)}
+	promotionsmanager.GetPromotionManager().Promotions["GoldenBoy"] = goldenboy
 
 	Ali := fighters.NewFighter("Muhammad Ali", 25, 186)
 	Frazier := fighters.NewFighter("George Frazier", 22, 185)

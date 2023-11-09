@@ -4,7 +4,6 @@ import (
 	promotions "fighter.com/event/Promotions"
 )
 
-// CombatSport represents a combat sport
 type CombatSport struct {
 	Name       string
 	Promotions []promotions.Promotion
