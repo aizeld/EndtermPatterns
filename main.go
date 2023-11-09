@@ -34,6 +34,8 @@ func main() {
 		promotion.NotifyFighters("New promotion announcement in " + promotion.Name())
 	}
 
+	championDecorator := fighters.ChampionStatusDecorator{IsChampion: true}
+
 	//boxing
 
 	boxing := combatsport.NewCombatSport("Boxing")
@@ -46,6 +48,14 @@ func main() {
 	goldenboy.AddFighter(*Ali, "HeavyWeight")
 	goldenboy.AddFighter(*Frazier, "HeavyWeight")
 	boxing.AddPromotion(goldenboy)
+
+	championDecorator.Modify(Khabib)
+	championDecorator.Modify(JonJones)
+	championDecorator.Modify(Ali)
+
+	fighterss := []*fighters.Fighter{Khabib, JonJones, Ali, Frazier}
+
+	fighters.ShowChampions(fighterss)
 
 	for _, promotion := range boxing.Promotions {
 		promotion.NotifyFighters("New promotion announcement in " + promotion.Name())

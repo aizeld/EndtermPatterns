@@ -16,7 +16,3 @@ func NewWeightClass(name string) *WeightClass {
 func (wc *WeightClass) AddFighter(fighter fighters.Fighter) {
 	wc.Fighters = append(wc.Fighters, fighter)
 }
-
-func Shit() string {
-	return "shite"
-}
